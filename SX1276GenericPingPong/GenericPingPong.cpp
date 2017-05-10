@@ -365,6 +365,7 @@ int SX1276PingPong()
             State = LOWPOWER;
             break;
         case LOWPOWER:
+        	sleep();
             break;
         default:
             State = LOWPOWER;
