@@ -34,36 +34,36 @@ int SX1276PingPong(void);
 /*!
  * @brief Function to be executed on Radio Tx Done event
  */
-void OnTxDone( void );
+void OnTxDone(void *radio);
 
 /*!
  * @brief Function to be executed on Radio Rx Done event
  */
-void OnRxDone( uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr );
+void OnRxDone(void *radio, uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr );
 
 /*!
  * @brief Function executed on Radio Tx Timeout event
  */
-void OnTxTimeout( void );
+void OnTxTimeout(void *radio);
 
 /*!
  * @brief Function executed on Radio Rx Timeout event
  */
-void OnRxTimeout( void );
+void OnRxTimeout(void *radio);
 
 /*!
  * @brief Function executed on Radio Rx Error event
  */
-void OnRxError( void );
+void OnRxError(void *radio);
 
 /*!
  * @brief Function executed on Radio Fhss Change Channel event
  */
-void OnFhssChangeChannel( uint8_t channelIndex );
+void OnFhssChangeChannel(void *radio, uint8_t channelIndex );
 
 /*!
  * @brief Function executed on CAD Done event
  */
-void OnCadDone( void );
+void OnCadDone(void *radio);
 
 #endif // __MAIN_H__

@@ -374,7 +374,7 @@ int SX1276PingPong()
     }
 }
 
-void OnTxDone( void )
+void OnTxDone(void *radio)
 {
     Radio->Sleep( );
     State = TX;
@@ -382,7 +382,7 @@ void OnTxDone( void )
         dprintf("> OnTxDone");
 }
 
-void OnRxDone( uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr)
+void OnRxDone(void *radio, uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr)
 {
     Radio->Sleep( );
     BufferSize = size;
@@ -393,7 +393,7 @@ void OnRxDone( uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr)
     dump("Data:", payload, size);
 }
 
-void OnTxTimeout( void )
+void OnTxTimeout(void *radio)
 {
     *led3 = 0;
     Radio->Sleep( );
@@ -402,7 +402,7 @@ void OnTxTimeout( void )
         dprintf("> OnTxTimeout");
 }
 
-void OnRxTimeout( void )
+void OnRxTimeout(void *radio)
 {
     *led3 = 0;
     Radio->Sleep( );
@@ -412,7 +412,7 @@ void OnRxTimeout( void )
         dprintf("> OnRxTimeout");
 }
 
-void OnRxError( void )
+void OnRxError(void *radio)
 {
     Radio->Sleep( );
     State = RX_ERROR;
