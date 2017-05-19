@@ -24,7 +24,7 @@
 
 #if USE_MODEM_LORA == 1
 
-#define LORA_BANDWIDTH          LORA_BANKWIDTH_125kHz
+#define LORA_BANDWIDTH          125000  // LoRa default, details in SX1276::BandwidthMap
 #define LORA_SPREADING_FACTOR   LORA_SF7
 #define LORA_CODINGRATE         LORA_ERROR_CODING_RATE_4_5
 
@@ -131,15 +131,7 @@ int SX1276PingPong()
     dprintf("Freqency: %.1f", (double)RF_FREQUENCY/1000000.0);
     dprintf("TXPower: %d dBm",  TX_OUTPUT_POWER);
 #if USE_MODEM_LORA == 1
-    if (LORA_BANDWIDTH == LORA_BANKWIDTH_125kHz) {
-        dprintf("Bandwidth: %d kHz", 125);
-    } else if (LORA_BANDWIDTH == LORA_BANKWIDTH_250kHz) {
-        dprintf("Bandwidth: %d kHz",  250);
-    } else if (LORA_BANDWIDTH == LORA_BANKWIDTH_500kHz) {
-        dprintf("Bandwidth: %d kHz",  500);
-    } else {
-        dprintf("Unkown Bandwidth: %d kHz",  LORA_BANDWIDTH);
-    }
+    dprintf("Bandwidth: %d kHz", LORA_BANDWIDTH);
     dprintf("Spreading factor: SF%d", LORA_SPREADING_FACTOR);
 #elif USE_MODEM_FSK == 1
     dprintf("Bandwidth: %d kHz",  FSK_BANDWIDTH);
