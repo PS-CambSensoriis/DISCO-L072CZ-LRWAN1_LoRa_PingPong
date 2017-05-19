@@ -150,15 +150,14 @@ int SX1276PingPong()
     RadioEvents.RxDone = OnRxDone;
     RadioEvents.RxError = OnRxError;
     RadioEvents.TxTimeout = OnTxTimeout;
-    RadioEvents.RxTimeout = OnRxTimeout;
-    Radio->Init( &RadioEvents );
-    
-    // verify the connection with the board
-    while( Radio->Read( REG_VERSION ) == 0x00  )
-    {
-        dprintf("Radio could not be detected!");
-        wait( 1 );
+    RadioEvents.RxTimeout = OnRxTimeout;    
+    if (Radio->Init( &RadioEvents ) == false) {
+        while(1) {
+        	dprintf("Radio could not be detected!");
+        	wait( 1 );
+        }
     }
+
     
     switch(Radio->DetectBoardType()) {
         case SX1276MB1LAS:
