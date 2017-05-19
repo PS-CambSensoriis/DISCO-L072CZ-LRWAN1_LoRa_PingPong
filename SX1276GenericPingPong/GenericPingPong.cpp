@@ -131,7 +131,7 @@ int SX1276PingPong()
     dprintf("Freqency: %.1f", (double)RF_FREQUENCY/1000000.0);
     dprintf("TXPower: %d dBm",  TX_OUTPUT_POWER);
 #if USE_MODEM_LORA == 1
-    dprintf("Bandwidth: %d kHz", LORA_BANDWIDTH);
+    dprintf("Bandwidth: %d Hz", LORA_BANDWIDTH);
     dprintf("Spreading factor: SF%d", LORA_SPREADING_FACTOR);
 #elif USE_MODEM_FSK == 1
     dprintf("Bandwidth: %d kHz",  FSK_BANDWIDTH);

@@ -5,7 +5,10 @@
  */
  #include "main.h"
 
-
+/*
+ * IMPORTANT NOTE
+ * Use the Nucleo-L073RZ target for the STM B_L072Z_LRWAN1 LoRa board 
+ */
 DigitalOut myled(LED1);
 BufferedSerial *ser;
 
