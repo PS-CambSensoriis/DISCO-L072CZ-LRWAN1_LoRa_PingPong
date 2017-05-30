@@ -8,7 +8,7 @@
 
 #ifdef TARGET_NUCLEO_L476RG
  #define FEATURE_LORA   1
-#elif TARGET_STM32L0
+#elif TARGET_DISCO_L072CZ_LRWAN1
  #define FEATURE_LORA   1
  #define B_L072Z_LRWAN1_LORA    1 // the STM Lora Board
 #endif
@@ -31,7 +31,7 @@
 #define LORA_DIO0       PB_4
 #define LORA_DIO1       PB_1
 #define LORA_DIO2       PB_0
-#define LORA_DIO3       PC_13
+#define LORA_DIO3       (PinName)0x2D //PC_13
 #define LORA_DIO4       PA_5
 #define LORA_DIO5       PA_4
 #define LORA_ANT_RX     PA_1
