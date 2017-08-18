@@ -9,19 +9,12 @@
 #ifdef TARGET_NUCLEO_L476RG
  #define FEATURE_LORA   1
 #elif TARGET_DISCO_L072CZ_LRWAN1
- #define FEATURE_LORA   1
- #define B_L072Z_LRWAN1_LORA    1 // the STM Lora Board
+#define FEATURE_LORA   1
 #endif
 
 
 
-#if  defined(TARGET_STM32L0)
-
-#ifdef B_L072Z_LRWAN1_LORA      // B-L072Z-LRWAN1 LoRa Board using the Murta SX1276
-#define USER_BUTTON     PB_2    // Red not PC13 as used on the Nucleo
-#define LED2            PA_5    // Green
-#define LED3            PB_6    // Blue
-#define LED4            PB_7    // Red
+#if defined(TARGET_DISCO_L072CZ_LRWAN1)
 
 #define LORA_SPI_MOSI   PA_7
 #define LORA_SPI_MISO   PA_6
@@ -31,14 +24,13 @@
 #define LORA_DIO0       PB_4
 #define LORA_DIO1       PB_1
 #define LORA_DIO2       PB_0
-#define LORA_DIO3       (PinName)0x2D //PC_13
+#define LORA_DIO3       PC_13
 #define LORA_DIO4       PA_5
 #define LORA_DIO5       PA_4
 #define LORA_ANT_RX     PA_1
 #define LORA_ANT_TX     PC_2
 #define LORA_ANT_BOOST  PC_1
 #define LORA_TCXO       PA_12   // 32 MHz
-#endif // B_L072Z_LRWAN1_LORA
 
 
 

@@ -101,7 +101,7 @@ int SX1276PingPong()
 {
 #if( defined ( TARGET_KL25Z ) || defined ( TARGET_LPC11U6X ) )
     DigitalOut *led = new DigitalOut(LED2);
-#elif defined(TARGET_NUCLEO_L073RZ)
+#elif defined(TARGET_NUCLEO_L073RZ) || defined(TARGET_DISCO_L072CZ_LRWAN1)
     DigitalOut *led = new DigitalOut(LED4);   // RX red
     led3 = new DigitalOut(LED3);  // TX blue
 #else
@@ -365,7 +365,7 @@ int SX1276PingPong()
     }
 }
 
-void OnTxDone(void *radio)
+void OnTxDone(void *radio, void *userThisPtr, void *userData)
 {
     Radio->Sleep( );
     State = TX;
@@ -373,7 +373,7 @@ void OnTxDone(void *radio)
         dprintf("> OnTxDone");
 }
 
-void OnRxDone(void *radio, uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr)
+void OnRxDone(void *radio, void *userThisPtr, void *userData, uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr)
 {
     Radio->Sleep( );
     BufferSize = size;
@@ -384,7 +384,7 @@ void OnRxDone(void *radio, uint8_t *payload, uint16_t size, int16_t rssi, int8_t
     dump("Data:", payload, size);
 }
 
-void OnTxTimeout(void *radio)
+void OnTxTimeout(void *radio, void *userThisPtr, void *userData)
 {
     *led3 = 0;
     Radio->Sleep( );
@@ -393,7 +393,7 @@ void OnTxTimeout(void *radio)
         dprintf("> OnTxTimeout");
 }
 
-void OnRxTimeout(void *radio)
+void OnRxTimeout(void *radio, void *userThisPtr, void *userData)
 {
     *led3 = 0;
     Radio->Sleep( );
@@ -403,7 +403,7 @@ void OnRxTimeout(void *radio)
         dprintf("> OnRxTimeout");
 }
 
-void OnRxError(void *radio)
+void OnRxError(void *radio, void *userThisPtr, void *userData)
 {
     Radio->Sleep( );
     State = RX_ERROR;
