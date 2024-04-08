@@ -10,9 +10,9 @@ BufferedSerial *ser;
 
 int main() {
     SystemClock_Config();
-    ser = new BufferedSerial(USBTX, USBRX);
-    ser->baud(115200*2);
-    ser->format(8);
+    ser = new BufferedSerial(USBTX, USBRX);  
+    ser->baud(115200); //ser->baud(115200*2);
+    ser->format(8);  
     ser->printf("Hello World\n\r");
     myled = 1;
     
